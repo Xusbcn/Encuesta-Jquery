@@ -1,10 +1,13 @@
 $('document').ready(function () {
+    //creamos el div contenedor de las encuestas
    $('body').append('<div class ="contenedores" id ="contenedor">');
+
+   //creamos el inicio de las encuestas
     function iniciarEncuestaJquery(){
         
-        $('#contenedor').append('<div id="divinicioencuesta">')
-        $('#divinicioencuesta').append('<h3>Encuesta de satisfacción del sistema de evaluación de M06 (AWS2)</h3>')
-        $('#divinicioencuesta').append('<button class="boton" id ="botoncomenzar">comenzar encuesta </button>')
+        $('#contenedor').append('<div id="divinicioencuesta" class="contenesordiv">')
+        $('#divinicioencuesta').append('<h1>Encuesta de satisfacción del sistema de evaluación de M06 (AWS2)</h1>')
+        $('#divinicioencuesta').append('<button class="estiloboton" id ="botoncomenzar">comenzar encuesta </button>')
          $('<br/>')
          $('#botoncomenzar').on('click', function(){
              
@@ -12,9 +15,10 @@ $('document').ready(function () {
             
          })
     }
-    iniciarEncuestaJquery()
-   // iniciarEncuestae1()
 
+    iniciarEncuestaJquery()
+   
+//funcion que crea la encuesta e1
     function encuestae1(){
         
         $('#contenedor').append(
@@ -35,44 +39,47 @@ $('document').ready(function () {
             $('<button/>', {
                 type: 'submit',
                 id: 'botone1',
+                class: 'estiloboton botonmargine1',
                 text: 'Continuar'
             })
             
         )
         $('#forme1').append(
             $('<div/>)',{
-            class: 'divcheckbox',
+            class: 'estiloradio',
             id: 'divcheckboxe1'
         }).append(
             $('<input/>', {
                 type: 'radio',
                 name: 'radioe1',
                 id:'radioe1-1',
-                value: 'si'
+                value: 'Si'
             }),
             $('<label/>', {
-                text: 'si'
+                text: 'Si'
             })
         ),
          $('<div/>)', {
-                class: 'divcheckbox',
+                class: 'estiloradio',
                 id: 'divcheckboxe2'
             }).append(
             $('<input/>', {
                 type: 'radio',
                 name: 'radioe1',
                 id: 'radioe1-2',
-                value: 'no'
+                value: 'No'
             }),
             $('<label/>', {
-                text: 'no'
+                text: 'No'
             })
             )
         )
+        //eliminamos la bienvenida
         $('#divinicioencuesta').remove()
 
        
-
+        //creamos la siguiente encuesta según la respuesta del usuario.
+        //Deshabilitaremos los radiosbuttons una vez clicado el boton 'continuar' para evitar alterar la respuesta final
         $('#botone1').on('click',function(){
             if($('#radioe1-1').is(':checked')){
                 encuestae3()
@@ -88,52 +95,67 @@ $('document').ready(function () {
                 $('#forme1 input[name="radioe1"]').each(function () {
                     $(this).prop('disabled', true)
                 })
+            } else {
+                alert('HAS DE ELEGIR UNA RESPUESTA PARA CONTINUAR')
             }
         })
         
     }
 
     
-
+    // funcion que crea la encuesta e2
     function encuestae2(){
         $('#contenedor').append($('<div id="contenedore2"/>'))
         $('#contenedore2').append(
             $('<hr/>'),
             $('<div/>',{
                 name: 'divlabel',
-                class:'estilolabel',
+                class:'estilolabel estilotexto',
                 text: '¡Gracias por haber participado en esta encuesta!'
             }),
-            $('<label/>').text('Puedes dejarnos un comentario en el siguiente recuadro:'),
+            $('<label/>',{
+                text: 'Puedes dejarnos un comentario en el siguiente recuadro:',
+                class: 'labele2'
+            }),
+            
             $('<form/>', {
                 action: '#',
                 method: '#',
                 id: 'forme2'
             }),
-            $('<label/> ').text('Resumen de la encuesta:'),
+            $('<br/>'),
+            $('<label/> ',{
+                text: 'Resumen de la encuesta:',
+                class: 'labele2'
+            }),
+            
             $('<div/>',{
-                id: 'divresumen'
+                id: 'divresumen',
+                class: 'estilodivresumen'
             }),
             $('<button/>',{
                 id: 'botonfinalizar',
+                class: 'estiloboton botonmargine1',
                 text:'Finalizar Encuesta'
             })
 
         )
 
         $('#forme2').append(
+            $('<br/>'),
             $('<div id ="divTextAreae2"/>').append(
                 $('<textarea/>',{
                     id: 'textareae2'
                 })
             )
         )
-        obtenervalores()
+        
+        obtenervalores() //Llamada de la función que recoge todas las respuestas del usuario 
         $('#botonfinalizar').on('click',finalizarEncuesta)
     }
     
     
-
+    //funcion que crea la encuesta e3
     function encuestae3(){
         $('#contenedor').append(
             $('<hr/>'),
@@ -150,6 +172,7 @@ $('document').ready(function () {
                 }),
             $('<button/>', {
                 type: 'submit',
+                class: 'estiloboton botonmargine1',
                 id: 'botone3',
                 text: 'Continuar'
             })
@@ -200,7 +223,7 @@ $('document').ready(function () {
         )
         )
         
-
+           //comprobamos que haya, al menos, una respuesta seleccionada. Deshabilitamos botones una vez le damos a continuar         
         $('#botone3').on('click', function () {
             if ($('#radioe3-1').is(':checked')) {
                 encuestae5()
@@ -220,11 +243,13 @@ $('document').ready(function () {
                 $('#forme3 input[name="radioe3"]').each(function () {
                     $(this).prop('disabled', true)
                 })
+            } else {
+                alert('HAS DE ELEGIR UNA RESPUESTA PARA CONTINUAR')
             }
         })
     }
    
-
+    // Funcion que crea la encuesta e4
     function encuestae4() {
         $('#contenedor').append(
             $('<hr/>'),
@@ -242,6 +267,7 @@ $('document').ready(function () {
             $('<button/>', {
                 type: 'submit',
                 id: 'botone4',
+                class:'estiloboton',
                 text: 'Continuar'
             })
 
@@ -295,7 +321,7 @@ $('document').ready(function () {
                     type: 'checkbox',
                     name: 'texteareanamee4',
                     id:'radiotextarea'
-                    //value: 'El sistema solo se puede aplicar a aquellos alumnos que cursan el módulo por evaluación continua'
+                   
                 }),
                 $('<label/>', {
                     text: 'Otros Motivos'
@@ -310,6 +336,24 @@ $('document').ready(function () {
                 })
             )
         )
+        
+        $('#textareae4').prop('disabled', true) //deshabilitamos el textarea
+            // habilitamos el textarea hasta que 'Otros Motivos' sea seleccionado. Si se desseleccionase, el textarea quedaría deshabilitado y vacio.   
+        $('#radiotextarea').on('click',function(){
+            $('#textareae4').prop('disabled', false)
+            if ($('#radiotextarea').is(':checked')) {
+                $('#textareae4').prop('disabled', false)
+            } else {
+                $('#textareae4').val('')
+                $('#textareae4').prop('disabled', true)
+            }
+        })
+
+        
+            
+        
+
+
         $('#botone4').on('click', function (){
             var incremento =0;
             $('#forme4 input[name="checkboxe4"]').each(function () {
@@ -322,13 +366,18 @@ $('document').ready(function () {
                $('#forme4 input[name="checkboxe4"]').each(function () {
                    $(this).prop('disabled', true)
                })
+               $('#textareae4').prop('disabled', true)
+               $('#radiotextarea').prop('disabled',true)
                $('#botone4').prop('disabled',true)
 
+            } else {
+                alert('HAS DE ELEGIR, AL MENOS, UNA RESPUESTA PARA CONTINUAR')
             }
             
         })
     }
    
+    //Función que crea la encuesta e5
     function encuestae5() {
         $('#contenedor').append(
             $('<hr/>'),
@@ -347,6 +396,7 @@ $('document').ready(function () {
             $('<button/>', {
                 type: 'submit',
                 id: 'botone5',
+                class: 'estiloboton',
                 text: 'Continuar'
             })
 
@@ -407,7 +457,7 @@ $('document').ready(function () {
         )
 
         $('#botone5').on('click', function () {
-            var incremento = 0;
+            var incremento = 0; // variable que indica el numero de checkboxes seleccionado
             $('#forme5 input[name="checkboxe5"]').each(function () {
                 if ($(this).is(':checked')) {
                     incremento++;
@@ -415,12 +465,14 @@ $('document').ready(function () {
             })
             if (incremento > 0 ) {
                 encuestae2()
-                $('#forme4 input[name="checkboxe5"]').each(function () {
+                $('#forme5 input[name="checkboxe5"]').each(function () {
                     $(this).prop('disabled', true)
                 })
                 $('#botone5').prop('disabled', true)
 
 
+            }else{
+                alert('HAS DE ELEGIR, AL MENOS, UNA RESPUESTA PARA CONTINUAR')
             }
 
             
@@ -430,29 +482,34 @@ $('document').ready(function () {
 
 
     //ACCIONES
-    //generar dinámicamente encuesta e1
+    
     var aumentar=0;
 
+    //Función que crea la vista final
     function finalizarEncuesta(){
-      //  $('#botonfinalizar').remove()
-       var divresumenclonado = $('#divresumen').clone()
+      
+       var divresumenclonado = $('#divresumen').clone()//clonamos el contenido de todas las respuestas del usuario
+     
        
-        var textareaform2 = $('#textareae2').clone()
+        var textareaform2 = $('#textareae2').clone()//clonamos contenido del textarea de la encuesta e2
        
       
-       $('#contenedor').empty()
+       $('#contenedor').empty() //eliminamos contenido del contenedor
+        //añadimos el contenido clonado
         $('#contenedor').append(
             $('<div/>',{
                 id: 'divtitulofinal'
-            }).append('<h2>Este es el resumen de tus respuestas</h2>'),
+            }).append('<h2>ESTE ES EL RESUMEN DE TUS RESPUESTAS</h2>'),
          $('<div/>',{
-             id: 'resumentotal'
+             id: 'resumentotal',
+             class:'classresumen'
          }).append(
             divresumenclonado
             
          ),
          $('<button/>', {
              id: 'irainicio',
+             class: 'estiloboton',
              text: 'Ir al inicio'
          })
          )
@@ -472,6 +529,8 @@ $('document').ready(function () {
        })
         
     }
+
+    //funcion que obtiene las respuestas de los usuarios y la muestar en la encuesta e2
    function obtenervalores(){
       $('#forme1 input[name="radioe1"]').each(function(){
           if($(this).is(':checked')){

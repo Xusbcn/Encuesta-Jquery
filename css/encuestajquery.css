@@ -1,0 +1,76 @@
+body {
+    background-color: #142b866b
+}
+h1,h2 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+hr {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 7px;
+    background-color: darkgray;
+}
+.contenedores {
+    background-color: #f1f7f4e6;
+    border: 2px solid;
+    border-radius: 5px;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+
+}
+.estiloboton {
+    background-color: #222376;
+    border-radius: 8px;
+    padding: 12px 28px;
+    cursor: pointer;
+    font-variant: all-petite-caps;
+    color: aliceblue;
+    margin-top: 1%;
+    font-size: inherit;
+}
+.botonmargine1 {
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.estilolabel {
+    font-family: "Arial Black", monospace;
+    font-size: x-large;
+    margin-bottom: 1%;
+}
+.estiloradio {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.estilotexto{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.labele2{
+    font-weight: bold;
+}
+li{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.estilodivresumen{
+        margin-top: 20px;
+}
+.classresumen {
+    font-family: cursive;
+    border-style: double;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: cornsilk;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: inherit;
+}
