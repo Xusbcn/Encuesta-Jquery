@@ -361,7 +361,7 @@ $('document').ready(function () {
                     incremento++;
                 }
             })
-            if (incremento > 0 || $('#radiotextarea').is(':checked') && $('#textareae4').val()!='') {
+            if (incremento > 0 && $('#radiotextarea').is(':checked') && $('#textareae4').val() != '' || incremento > 0 && $('#radiotextarea').prop('checked', false)) {
                encuestae2()
                $('#forme4 input[name="checkboxe4"]').each(function () {
                    $(this).prop('disabled', true)
